@@ -1,0 +1,48 @@
+<form class="row" [formGroup]="userService.userFormDetails" (submit)="onSubmit()" [class.submitted]="submitted">
+    <div class="col-12 mb-3">
+        <label class="form-lable">Name</label>
+        <input class="form-control form-control-lg" placeholder="Enter your name" formControlName="name">
+    </div>
+    <div class="col-12 mb-3">
+        <label class="form-lable">Email</label>
+        <input class="form-control form-control-lg" placeholder="Enter your email" formControlName="email">
+        <div
+            *ngIf="(userService.userFormDetails.get('email').invalid && userService.userFormDetails.get('email').touched) || userService.userFormDetails.get('email').dirty">
+            <small *ngIf="userService.userFormDetails.get('email').errors?.required" class="text-danger">Primary email
+                is required</small>
+            <small *ngIf="userService.userFormDetails.get('email').errors?.email" class="text-danger">Please provide a
+                valid email address</small>
+        </div>
+    </div>
+    <div class="col-12 mb-3">
+        <label class="form-lable">Address</label>
+        <input class="form-control form-control-lg" placeholder="Enter your address" formControlName="address">
+    </div>
+    <div class="col-12 mb-3">
+        <label class="form-lable">Class</label>
+        <input class="form-control form-control-lg" placeholder="Enter your class" formControlName="class">
+    </div>
+    <div class="col-12 mb-3">
+        <label class="form-lable">Phone Number</label>
+        <input class="form-control form-control-lg" placeholder="Enter your Number" formControlName="phonenumber">
+        <div
+            *ngIf="(userService.userFormDetails.get('phonenumber').invalid && userService.userFormDetails.get('phonenumber').touched) || userService.userFormDetails.get('phonenumber').dirty">
+            <small *ngIf="userService.userFormDetails.get('phonenumber').errors?.required" class="text-danger">Mobile Number is required.</small>
+                <small *ngIf="userService.userFormDetails.get('phonenumber').errors?.pattern" class="text-danger">Please, Enter 10 digit Mobile Number.</small>
+            <!-- <small *ngIf="userService.userFormDetails.get('email').errors?.email" class="text-danger">Please provide a
+                valid email address</small> -->
+        </div>
+    </div>
+    <div class="col-12 mb-3">
+        <label class="form-lable">Attach Image</label>
+        <input class="form-control" type="file" formControlName="user_file" (change)="onFileSelect($event)" />
+        <br />
+    </div>
+
+    <div class="col-6 d-grid">
+        <button class="btn btn-md btn-primary" type="submit">Submit</button>
+    </div>
+    <div class="col-6 d-grid">
+        <button class="btn btn-md btn-primary" (click)="resetForm()" type="submit">Reset</button>
+    </div>
+</form>

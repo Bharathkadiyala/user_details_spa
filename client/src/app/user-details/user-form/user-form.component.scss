@@ -1,0 +1,17 @@
+form input::placeholder{
+    color: gray !important;
+    font-weight: 300 !important;
+}
+form label{
+    color: grey;
+    text-transform: uppercase;
+}
+form input{
+    font-weight: 400;
+}
+form button[type=submit]{
+    text-transform: uppercases;
+}
+form.ng-invalid.submitted input.ng-invalid{
+    border-color: red;
+}
